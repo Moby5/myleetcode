@@ -26,6 +26,7 @@ class Solution(object):
         :type q: TreeNode
         :rtype: bool
         """
+        p = 2
         pass
 
 
