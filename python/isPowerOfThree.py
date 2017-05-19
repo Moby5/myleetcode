@@ -17,7 +17,8 @@ Could you do it without using any loop / recursion?
 你可以不用循环/递归解出本题吗？
 
 解题思路：
-解法I：求对数，然后乘方，判断得数是否相等
+解法1：求对数，然后乘方，判断得数是否相等
+解法2：递归
 """
 
 class Solution(object):
@@ -27,6 +28,17 @@ class Solution(object):
         :rtype: bool
         """
         return n>0 and 3 ** round(math.log(n, 3))==n
+    
+    def isPowerOfThree2(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        if n==1:
+            return True
+        if n==0 or n%3>0:
+            return False
+        return self.isPowerOfThree(n/3)
 
 
 if __name__ == '__main__':
@@ -37,3 +49,4 @@ if __name__ == '__main__':
     print args.num
     test = Solution()
     print test.isPowerOfThree(args.num)
+    print test.isPowerOfThree2(args.num)
