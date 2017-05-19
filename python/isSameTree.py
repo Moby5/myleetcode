@@ -19,6 +19,21 @@ Two binary trees are considered equal if they are structurally identical and the
 import argparse
 
 
+# Definition for a binary tree node.
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
 class Solution(object):
     def isSameTree(self, p, q):
         """
@@ -26,10 +41,28 @@ class Solution(object):
         :type q: TreeNode
         :rtype: bool
         """
-        p = 2
-        pass
+        if p and q:
+            return p.val == q.val and \
+                       self.isSameTree(p.left, q.left) and \
+                       self.isSameTree(p.right, q.right)
+        return p is None and q is None
 
 
 if __name__ == '__main__':
+    p = TreeNode(3)
+    p.left = TreeNode(1)
+    p.right = TreeNode(5)
 
-    print "hi, abby, it's your show time now!"
+    # q = TreeNode(4)
+    # q.left = TreeNode(2)
+    # q.right = TreeNode(6)
+
+    q = TreeNode(3)
+    q.left = TreeNode(1)
+    # q.right = TreeNode(5)
+
+    # print 'check if the two given binary trees are equal'
+    test = Solution()
+    print test.isSameTree(p, q)
+
+
