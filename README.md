@@ -3,7 +3,7 @@ some solutions for leetcode problems, anyway, perseverance brings success~
 where there is a will, there is a way. And I always believe tomorrow will be better!
 
 小幸运：
-![happy one, lucky life](./img/loveby.jpg)
+![happy one, lucky life](./img/520by.jpg)
 
 ## links
 - [i云轩工作室内](http://sysucloud.cn/iyun/)
