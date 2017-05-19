@@ -18,6 +18,7 @@ Two binary trees are considered equal if they are structurally identical and the
 
 import argparse
 
+
 class Solution(object):
     def isSameTree(self, p, q):
         """
