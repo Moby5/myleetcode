@@ -59,12 +59,9 @@ class Solution(object):
         if total_size <= 1: return False
         subs = s[0]
         for ch in s[1:]:
-            if ch == subs[0] and len(s) % len(subs) == 0:                             
-                res = True
-                size = len(subs)  
-                for k in range(total_size / size):                    
-                    if s[k*size : (k+1)*size] != subs: res = False
-                if res:  return True  
+            if ch == subs[0] and len(s) % len(subs) == 0: 
+                if subs * (len(s) / len(subs)) == s:
+                    return True
             subs += ch
         return False    
     
