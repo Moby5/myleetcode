@@ -1,6 +1,6 @@
 #!/bin/bash
 
-:'
+: '
 193. Valid Phone Numbers
 
 Given a text file file.txt that contains list of phone numbers (one per line), 
