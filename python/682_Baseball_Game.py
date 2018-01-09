@@ -95,6 +95,6 @@ class Solution(object):
 
 
 solution = Solution()
-print solution.calPoints(["5","2","C","D","+"])    # 30
+print solution.calPoints(["5","2","C","D","+"])      # 30
 print solution.calPoints(["5","-2","4","C","D","9","+","+"])  # 27
 
