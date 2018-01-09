@@ -4,6 +4,10 @@
 
 
 """
+http://bookshadow.com/weblog/2017/09/24/leetcode-baseball-game/
+
+682. Baseball Game
+
 You're now a baseball game point recorder.
 
 Given a list of strings, each string can be one of the 4 following types:
@@ -42,40 +46,54 @@ Round 7: You could get 9 + 5 = 14 points. The sum is 27.
 Note:
 The size of the input list will be between 1 and 1000.
 Every integer represented in the list will be between -30000 and 30000.
+
+题目大意：
+实现棒球记分牌。输入一组字符串：
+
+数字表示分数
+'+'表示当前轮次的分数等于上两轮分数之和
+'D'表示当前轮次的分数等于上一轮分数加倍
+'C'表示清除上一次的分数
+求最终的得分总和
+
+解题思路：
+栈（Stack）
 """
 
 
 class Solution(object):
-    def calPoints(self, ops):
+    def calPoints_v0(self, ops):
         """
         :type ops: List[str]
         :rtype: int
         """
-        ans, point = 0, 0
         history = []
         for op in ops:
             if op == 'C':
                 if len(history) > 0:
-                    point = history[-1] if len(history) > 0 else 0
-                    ans -= point
                     history.pop()
             elif op == 'D':
-                point = 2 * history[-1] if len(history) > 0 else 0
-                ans += point
-                history.append(point)
+                history.append(2 * history[-1] if len(history) > 0 else 0)
             elif op == '+':
-                y = history[-2] if len(history) > 1 else 0
-                z = history[-1] if len(history) > 0 else 0
-                point = y + z
-                ans += point
-                history.append(point)
+                history.append((history[-2] if len(history) > 1 else 0) + history[-1] if len(history) > 0 else 0)
             else: # 0 ~ 9
-                point = int(op)
-                ans += point
-                history.append(point)
-            # print op, point, ans, history
-        return ans
-                
+                history.append(int(op))
+        return sum(history)
+
+    def calPoints(self, ops):
+        stack = []
+        for op in ops:
+            if op == 'C':
+                stack.pop()
+            elif op == 'D':
+                stack.append(stack[-1] * 2)
+            elif op == '+':
+                stack.append(stack[-1] + stack[-2])
+            else:
+                stack.append(int(op))
+        return sum(stack)
+
+
 solution = Solution()
 print solution.calPoints(["5","2","C","D","+"])  # 30
 print solution.calPoints(["5","-2","4","C","D","9","+","+"])  # 27
